@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+import { currentTheme } from "./src/theme";
 
 const config: Config = {
   darkMode: ["class"],
@@ -20,40 +21,49 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: `rgb(${currentTheme.border})`,
+        input: `rgb(${currentTheme.input})`,
+        ring: `rgb(${currentTheme.ring})`,
+        background: `rgb(${currentTheme.background})`,
+        foreground: `rgb(${currentTheme.foreground})`,
         primary: {
-          DEFAULT: "#66CCFF",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: `rgb(${currentTheme.primary})`,
+          foreground: `rgb(${currentTheme.foreground})`,
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: `rgb(${currentTheme.secondary})`,
+          foreground: `rgb(${currentTheme.foreground})`,
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: `rgb(${currentTheme.error})`,
+          foreground: `rgb(${currentTheme.foreground})`,
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: `rgb(${currentTheme.muted})`,
+          foreground: `rgb(${currentTheme["muted-foreground"]})`,
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: `rgb(${currentTheme.accent})`,
+          foreground: `rgb(${currentTheme.foreground})`,
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: `rgb(${currentTheme.popover})`,
+          foreground: `rgb(${currentTheme["popover-foreground"]})`,
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: `rgb(${currentTheme.card})`,
+          foreground: `rgb(${currentTheme["card-foreground"]})`,
         },
-        // PulsePal Brand Colors
+        // Theme-based colors
+        success: `rgb(${currentTheme.success})`,
+        warning: `rgb(${currentTheme.warning})`,
+        error: `rgb(${currentTheme.error})`,
+        info: `rgb(${currentTheme.info})`,
+
+
+        // PulsePal Brand Colors (fallback for compatibility)
+
+        
         aqua: "#4ECDC4",
         cream: "#FFF8F2",
         slate: "#2E2E3A",
@@ -82,6 +92,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
