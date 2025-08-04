@@ -3,12 +3,13 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { generateMetadata, pageSEO } from "@/lib/seo";
+import {
+  StructuredData,
+  structuredDataSchemas,
+} from "@/components/StructuredData";
 
-export const metadata: Metadata = {
-  title: "PulsePal - Smart Leisure Centre Management",
-  description: "AI-powered CRM & booking platform for leisure centres",
-  generator: "v0.dev",
-};
+export const metadata: Metadata = generateMetadata(pageSEO.home);
 
 export default function RootLayout({
   children,
@@ -27,6 +28,8 @@ html {
         `}</style>
       </head>
       <body>
+        <StructuredData data={structuredDataSchemas.organization} />
+        <StructuredData data={structuredDataSchemas.softwareApplication} />
         <Toaster />
         {children}
       </body>
